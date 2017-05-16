@@ -6,6 +6,14 @@
   <input type="submit" value="Enter">
 </form>
 
-<% @tweets.each do |tweet| %>
-  <p><%= tweet.text %></p>
+<% if flash[:error] %>
+  <p><%= flash[:error] %></p>
+<% end %>
+
+<% if !@tweets.empty? %>
+  <% @tweets.each do |tweet| %>
+    <p><%= tweet.text %></p>
+  <% end %>
+<% else %>
+  <p>No tweets to display.</p>
 <% end %>
