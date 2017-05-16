@@ -1,19 +1,28 @@
-<h1>Enter a username below</h1>
+<div class="container-fluid">
+  <h1>Enter a username below</h1>
+</div>
 
-<form action="/tweets" method="post">
-  <label>Username</label>
-  <input type="text" name="username">
-  <input type="submit" value="Enter">
-</form>
+<div class="container-fluid">
+  <form class="form-inline" action="/tweets" method="post">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" name="username">
+    </div>
 
-<% if flash[:error] %>
-  <p><%= flash[:error] %></p>
-<% end %>
+    <input class="btn btn-primary" type="submit" value="Enter">
+  </form>
+</div>
 
-<% if !@tweets.empty? %>
-  <% @tweets.each do |tweet| %>
-    <p><%= tweet.text %></p>
+<div class="container-fluid">
+  <% if flash[:error] %>
+    <p><%= flash[:error] %></p>
   <% end %>
-<% else %>
-  <p>No tweets to display.</p>
-<% end %>
+
+  <% if !@tweets.empty? %>
+    <% @tweets.each do |tweet| %>
+      <p><%= tweet.text %></p>
+    <% end %>
+  <% else %>
+    <p>No tweets to display.</p>
+  <% end %>  
+</div>
