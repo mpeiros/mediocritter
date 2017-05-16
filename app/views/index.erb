@@ -1,4 +1,10 @@
-<h1>Tweets</h1>
+<h1>Enter a username below</h1>
+
+<form action="/tweets" method="post">
+  <label>Username</label>
+  <input type="text" name="username">
+  <input type="submit" value="Enter">
+</form>
 
 <% @tweets.each do |tweet| %>
   <p><%= tweet.text %></p>
