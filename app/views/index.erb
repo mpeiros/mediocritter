@@ -5,11 +5,10 @@
 <div class="container-fluid">
   <form class="form-inline" action="/tweets" method="post">
     <div class="form-group">
-      <label>Username</label>
-      <input type="text" name="username">
+      <input class="form-control" type="text" name="username" placeholder="Twitter Username">
     </div>
 
-    <input class="btn btn-primary" type="submit" value="Enter">
+    <input class="btn btn-primary" type="submit" value="Search">
   </form>
 </div>
 
@@ -19,10 +18,23 @@
   <% end %>
 
   <% if !@tweets.empty? %>
+    <div class="row center">
+      <div class="col-md-1 col-md-offset-4">
+        <img src="<%= @tweets.first.profile_pic_url %>" alt="Profile Picture" class="img-rounded" id="profile-pic">
+      </div>
+      <div class="col-md-2">
+        <h2><%= @tweets.first.user_actual_name %> <small>(@<%= @tweets.first.user_screen_name %>)</small></h2>
+      </div>
+    </div>
+
     <% @tweets.each do |tweet| %>
-      <p><%= tweet.text %></p>
+      <div class="container-fluid">
+        <p class="lead"><%= tweet.tweet_time %>: <%= tweet.text %></p>
+      </div>
     <% end %>
   <% else %>
-    <p>No tweets to display.</p>
+    <div class="container-fluid">
+      <p>No tweets to display.</p>
+    </div>
   <% end %>  
 </div>
