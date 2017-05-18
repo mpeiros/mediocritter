@@ -1,3 +1,11 @@
+<nav class="navbar navbar-inverse bg-primary justify-content">
+  <a class="navbar-brand" href="#">Mediocritter</a>
+  <ul class="nav navbar-nav navbar-left">
+    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  </ul>
+</nav>
+
 <div class="container-fluid">
   <h1>Enter a username below</h1>
 </div>
@@ -29,7 +37,7 @@
 
     <% @tweets.each do |tweet| %>
       <div class="container-fluid">
-        <p class="lead"><%= tweet.tweet_time %>: <%= tweet.text %></p>
+        <p class="text-primary"><%= tweet.tweet_time %>: <%= tweet.text %></p>
       </div>
     <% end %>
   <% else %>
