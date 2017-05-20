@@ -33,10 +33,9 @@
   </form>
 </div>
 
+<%= erb :'partials/_errors' %>
+
 <div class="container-fluid">
-  <% if flash[:error] %>
-    <p><%= flash[:error] %></p>
-  <% end %>
 
   <% if !@tweets.empty? %>
     <div class="row center">
@@ -56,12 +55,12 @@
       </div>
     <% end %>
   <% else %>
-    <div class="container-fluid">
-      <p>No tweets to display.</p>
+    <div class="container col-md-4 col-md-offset-4">
+      <p class="text-danger text-center bg-danger">No tweets to display.</p>
     </div>
   <% end %>  
 </div>
 
-<footer class="footer">
-    <p class="text-muted text-center">Mediocritter - © 2017</p>
-</footer>
+<!-- <footer class="footer">
+  <p class="text-muted text-center">Mediocritter - © 2017</p>
+</footer> -->

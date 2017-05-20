@@ -17,7 +17,8 @@ post '/tweets' do
     
     redirect '/tweets'
   else
-    flash[:error] = 'No tweets found for that username.'
-    redirect '/tweets'
+    @tweets = Tweet.all
+    @errors = ['No tweets found for that username.']
+    erb :index
   end
 end
