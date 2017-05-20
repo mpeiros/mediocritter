@@ -19,3 +19,7 @@
   position: relative;
   top: 11px;
 }
+
+#log-out-form input {
+  text-decoration: none;
+}
