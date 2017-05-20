@@ -1,4 +1,4 @@
-get '/' do
+get '/tweets' do
   @tweets = Tweet.all
 
   erb :index
@@ -15,9 +15,9 @@ post '/tweets' do
       Tweet.create(tweet_data)
     end
     
-    redirect '/'
+    redirect '/tweets'
   else
     flash[:error] = 'No tweets found for that username.'
-    redirect '/'
+    redirect '/tweets'
   end
 end
