@@ -25,6 +25,7 @@ require 'net/http'
 require 'simple_oauth'
 
 require 'dotenv/load'
+require 'bcrypt'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))

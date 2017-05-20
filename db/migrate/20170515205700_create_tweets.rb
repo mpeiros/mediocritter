@@ -8,7 +8,7 @@ class CreateTweets < ActiveRecord::Migration
       t.string :user_screen_name
       t.string :profile_pic_url
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
