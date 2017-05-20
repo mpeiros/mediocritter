@@ -15,5 +15,6 @@ post '/sessions' do
 end
 
 delete '/sessions/:id' do
-  
+  session.delete(:user_id)
+  redirect '/tweets'
 end
