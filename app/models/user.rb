@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :comments
+  has_many :searches
+  has_many :favorites
+  has_many :favorited_tweets, through: :favorites, source: :tweet
+
   validates_presence_of :email, :username, :password_hash
   validates_uniqueness_of :email, :username
 

@@ -1,6 +1,8 @@
 class CreateTweets < ActiveRecord::Migration
   def change
     create_table :tweets do |t|
+      t.references :search
+
       t.string :text
       t.string :hashtag
       t.date :tweet_time
