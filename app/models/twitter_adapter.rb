@@ -14,7 +14,7 @@ module TwitterAdapter
 
     hashtags = tweet['entities']['hashtags']
     if hashtags.length > 0 
-      tweet_hash[:hashtags] = hashtags[0]['text']
+      tweet_hash[:hashtag] = hashtags[0]['text']
     end
 
     tweet_hash[:tweet_time] = tweet['created_at']
