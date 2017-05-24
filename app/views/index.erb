@@ -37,7 +37,7 @@
 
 <div class="container-fluid">
 
-  <% if !@tweets.empty? %>
+  <% if @tweets && !@tweets.empty? %>
     <div class="row center">
       <div class="col-md-1 col-md-offset-4">
         <img src="<%= @tweets.first.profile_pic_url %>" alt="Profile Picture" class="img-rounded" id="profile-pic">
