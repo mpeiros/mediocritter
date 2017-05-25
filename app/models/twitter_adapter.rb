@@ -25,12 +25,13 @@ module TwitterAdapter
     tweet_hash
   end
 
-  def self.create_tweets(username)
+  def self.create_tweets(username, search_id)
     response = self.get_tweets(username)
 
     if response.code == '200'
       JSON.parse(response.body).each do |tweet|
         tweet_data = self.parse_tweet(tweet)
+        tweet_data[:search_id] = search_id
         Tweet.create(tweet_data)
       end
       true
