@@ -24,6 +24,10 @@
   text-decoration: none;
 }
 
-.glyphicon-heart {
+.favorited {
+  color: red;
+}
+
+.not-favorited {
   color: black;
 }

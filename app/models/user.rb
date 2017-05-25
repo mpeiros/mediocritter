@@ -21,4 +21,13 @@ class User < ActiveRecord::Base
       @user.password == password ? @user : nil
     end
   end
+
+  def favorited?(tweet)
+    self.favorited_tweets.each do |fav_tweet|
+      if fav_tweet.tweet_time == tweet.tweet_time && fav_tweet.text == tweet.text
+        return true        
+      end
+    end
+    false    
+  end
 end

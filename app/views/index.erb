@@ -36,7 +36,11 @@
             <% if logged_in? %>
               <form action="/tweets/<%= tweet.id %>/favorites" method="post">
                 <button type="submit" class="btn btn-link">
-                  <i class="glyphicon glyphicon-heart"></i>
+                  <% if current_user.favorited?(tweet) %>
+                    <i class="glyphicon glyphicon-heart favorited"></i>
+                  <% else %>
+                    <i class="glyphicon glyphicon-heart not-favorited"></i>
+                  <% end %>
                 </button>
               </form>
              <% end %> 
