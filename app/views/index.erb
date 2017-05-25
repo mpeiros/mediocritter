@@ -31,7 +31,16 @@
     <% @tweets.each do |tweet| %>
       <div class="container-fluid">
         <div class="panel panel-default col-md-6 col-md-offset-3">
-          <div class="panel-body"><%= tweet.tweet_time %>: <%= tweet.text %></div>
+          <div class="panel-body">
+            <p><%= tweet.tweet_time %>: <%= tweet.text %></p>
+            <% if logged_in? %>
+              <form action="/tweets/<%= tweet.id %>/favorites" method="post">
+                <button type="submit" class="btn btn-link">
+                  <i class="glyphicon glyphicon-heart"></i>
+                </button>
+              </form>
+             <% end %> 
+          </div>
         </div>
       </div>
     <% end %>
