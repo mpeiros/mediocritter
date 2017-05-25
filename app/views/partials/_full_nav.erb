@@ -1,11 +1,11 @@
 <nav class="navbar navbar-inverse bg-primary justify-content">
   <a class="navbar-brand" href="/">  
-    <img id="sloth-face" src="sloth_face.png" class="d-inline-block align-top">
+    <img id="sloth-face" src="../sloth_face.png" class="d-inline-block align-top">
   </a>
   <a class="navbar-brand" href="/">Mediocritter</a>
   <ul class="nav navbar-nav navbar-left">
     <% if logged_in? %>
-      <li><a href="#"><%= current_user.username %></a></li>
+      <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
       <li>
         <form id="log-out-form" action="/sessions/<%= current_user.id %>" method="post">
           <input type="hidden" name="_method" value="delete">
