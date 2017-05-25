@@ -20,7 +20,7 @@ end
                tweet_time: Faker::Date.between(1.year.ago, Date.today),
                user_actual_name: Faker::Name.name,
                user_screen_name: Faker::Internet.user_name,
-               profile_pic_url: 'sloth_face.png')
+               profile_pic_url: '../sloth_face.png')
 end
 
 50.times do

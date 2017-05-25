@@ -10,6 +10,8 @@
     <div class="container-fluid">
       <div class="panel panel-primary col-md-6 col-md-offset-3">
         <div class="panel-body">
+          <img src="<%= fav_tweet.profile_pic_url %>" alt="Profile Picture" class="img-rounded" id="profile-pic">
+          <h2><%= fav_tweet.user_actual_name %> <small>(@<%= fav_tweet.user_screen_name %>)</small></h2>
           <p><%= fav_tweet.tweet_time %></p> 
           <p class="lead"><%= fav_tweet.text %></p>
         </div>
