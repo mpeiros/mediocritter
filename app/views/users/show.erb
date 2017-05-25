@@ -8,8 +8,11 @@
 <div class="container-fluid">
   <% @user.favorited_tweets.order(tweet_time: :desc).each do |fav_tweet| %>
     <div class="container-fluid">
-      <div class="panel panel-default col-md-6 col-md-offset-3">
-        <div class="panel-body"><%= fav_tweet.tweet_time %>: <%= fav_tweet.text %></div>
+      <div class="panel panel-primary col-md-6 col-md-offset-3">
+        <div class="panel-body">
+          <p><%= fav_tweet.tweet_time %></p> 
+          <p class="lead"><%= fav_tweet.text %></p>
+        </div>
       </div>
     </div>
   <% end %>

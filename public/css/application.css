@@ -26,8 +26,10 @@
 
 .favorited {
   color: red;
+  font-size: 2em;
 }
 
 .not-favorited {
   color: black;
+  font-size: 2em;
 }

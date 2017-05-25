@@ -30,9 +30,10 @@
 
     <% @tweets.each do |tweet| %>
       <div class="container-fluid">
-        <div class="panel panel-default col-md-6 col-md-offset-3">
+        <div class="panel panel-primary col-md-6 col-md-offset-3">
           <div class="panel-body">
-            <p><%= tweet.tweet_time %>: <%= tweet.text %></p>
+            <p><%= tweet.tweet_time %></p> 
+            <p class="lead"><%= tweet.text %></p>
             <% if logged_in? %>
               <form action="/tweets/<%= tweet.id %>/favorites" method="post">
                 <button type="submit" class="btn btn-link">
