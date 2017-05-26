@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
     end
     false    
   end
+
+  def sort_favorited_tweets
+    self.favorited_tweets.sort_by { |fav_tweet| fav_tweet.favorited_at(self.id) }.reverse
+  end
 end
