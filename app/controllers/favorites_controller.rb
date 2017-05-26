@@ -3,10 +3,19 @@ post '/tweets/:tweet_id/favorites' do
   favorite = Favorite.new(user_id: current_user.id, tweet_id: tweet.id)
 
   if favorite.save
-    redirect '/tweets'
+    if request.xhr?
+      status 200
+      erb :'partials/_favorite_icon', layout: false
+    else
+      redirect '/tweets'
+    end
   else
-    @errors = favorite.errors.full_messages
-    erb :index
+    if request.xhr?
+      status 422
+    else
+      @errors = favorite.errors.full_messages
+      erb :index
+    end
   end
 end
 

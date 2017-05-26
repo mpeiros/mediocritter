@@ -35,14 +35,14 @@
             <p><%= tweet.tweet_time %></p> 
             <p class="lead"><%= tweet.text %></p>
             <% if logged_in? %>
-              <form action="/tweets/<%= tweet.id %>/favorites" method="post">
-                <button type="submit" class="btn btn-link">
+              <form class="favorite-form" action="/tweets/<%= tweet.id %>/favorites" method="post">
                   <% if current_user.favorited?(tweet) %>
-                    <i class="glyphicon glyphicon-heart favorited"></i>
+                    <%= erb :'partials/_favorite_icon' %>
                   <% else %>
-                    <i class="glyphicon glyphicon-heart not-favorited"></i>
+                    <button type="submit" class="btn btn-link">
+                      <i class="glyphicon glyphicon-heart not-favorited"></i>
+                    </button>
                   <% end %>
-                </button>
               </form>
              <% end %> 
           </div>
