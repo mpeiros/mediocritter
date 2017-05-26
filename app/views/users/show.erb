@@ -15,7 +15,14 @@
           <p class="lead"><%= fav_tweet.text %></p>
           <% if fav_tweet.get_comments(@user.id) %>
             <% fav_tweet.get_comments(@user.id).each do |comment| %>
-              <p><%= comment.content %> - <%= comment.user.username %></p>
+              <div class="container-fluid">
+                <div class="panel panel-default col-md-12">
+                  <div class="panel-body">
+                    <p><%= comment.content %></p>
+                    <p><small>Posted by <%= comment.user.username %></small></p>
+                  </div>
+                </div>
+              </div>
             <% end %>
           <% end %>
           <% if logged_in? %>
@@ -25,7 +32,7 @@
               </form>
             </div>
           <% end %>
-          <% if current_user.id == @user.id %>
+          <% if logged_in? && current_user.id == @user.id %>
             <div class="container-fluid col-md-offset-10">
               <form action="/favorites/<%= fav_tweet.get_favorite_id(@user.id) %>" method="post">
                 <input type="hidden" name="_method" value="delete">
