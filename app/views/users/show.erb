@@ -4,7 +4,6 @@
   <h1><%= @user.username %>'s Favorites</h1>
 </div>
 
-
 <div class="container-fluid">
   <% @user.sort_favorited_tweets.each do |fav_tweet| %>
     <div class="container-fluid">
@@ -14,9 +13,14 @@
           <h2><%= fav_tweet.user_actual_name %> <small>(@<%= fav_tweet.user_screen_name %>)</small></h2>
           <p><%= fav_tweet.tweet_time %></p> 
           <p class="lead"><%= fav_tweet.text %></p>
+          <% if fav_tweet.get_comments(@user.id) %>
+            <% fav_tweet.get_comments(@user.id).each do |comment| %>
+              <p><%= comment.content %> - <%= comment.user.username %></p>
+            <% end %>
+          <% end %>
           <% if logged_in? %>
             <div class="container-fluid ">
-              <form action="#" method="post">
+              <form action="/favorites/<%= fav_tweet.get_favorite_id(@user.id) %>/comments/new" method="get">
                 <button type="submit" class="btn btn-primary">Add Comment</button>
               </form>
             </div>

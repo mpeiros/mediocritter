@@ -9,4 +9,8 @@ class Tweet < ActiveRecord::Base
   def get_favorite_id(user_id)
     self.favorites.find_by(user_id: user_id).id
   end
+
+  def get_comments(user_id)
+    self.favorites.find_by(user_id: user_id).comments
+  end
 end

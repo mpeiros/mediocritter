@@ -1,0 +1,14 @@
+<%= erb :'partials/_full_nav' %>
+
+<div class="container col-md-4 col-md-offset-4">
+  <form class="form-signin" action="/favorites/<%= @favorite.id %>/comments" method="post">
+    <h2 class="form-signin-heading text-center">Add Comment Below</h2>
+    <br>
+    <label for="commentTextArea">Comment</label>
+    <textarea class="form-control" rows="5" name="content"></textarea>
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Add Comment</button>
+  </form>
+</div>
+
+<%= erb :'partials/_errors' %>
