@@ -15,8 +15,8 @@ post '/favorites/:favorite_id/comments' do
                         content: params[:content])
 
   if comment.save
-    # message = "#{current_user.username} left the following comment on your favorited tweet: #{comment.content}."
-    # TwilioAdapter.send_text(message)
+    message = "#{current_user.username} left the following comment on your favorited tweet: #{comment.content}."
+    TwilioAdapter.send_text(message)
 
     if request.xhr?
       status 200
