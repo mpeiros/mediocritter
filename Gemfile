@@ -22,6 +22,8 @@ gem 'bcrypt'
 
 gem 'faker'
 
+gem 'twilio-ruby'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
