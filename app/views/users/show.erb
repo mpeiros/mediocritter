@@ -26,9 +26,9 @@
             <% end %>
           <% end %>
           <% if logged_in? %>
-            <div class="container-fluid ">
+            <div class="container-fluid">
               <form action="/favorites/<%= fav_tweet.get_favorite_id(@user.id) %>/comments/new" method="get">
-                <button type="submit" class="btn btn-primary">Add Comment</button>
+                <button type="submit" class="btn btn-primary add-comment-button">Add Comment</button>
               </form>
             </div>
           <% end %>

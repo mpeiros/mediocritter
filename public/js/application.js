@@ -1,5 +1,6 @@
 $(document).ready(function() {
   favoriteFormListener();
+  showCommentFormListener();
 });
 
 var favoriteFormListener = function() {
@@ -23,5 +24,28 @@ var favoriteFormListener = function() {
     .fail(function() {
       alert('Error favoriting tweet.');
     })
+  });
+};
+
+var showCommentFormListener = function() {
+  $('.add-comment-button').on('click', function(event) {
+    event.preventDefault();
+    
+    var addCommentButton = $(this);
+    var getNewCommentForm = addCommentButton.closest('form');
+    var addCommentDiv = addCommentButton.closest('div')
+
+    var url = getNewCommentForm.attr('action');
+
+    $.ajax({
+      url: url
+    })
+    .done(function(response) {
+      addCommentDiv.prepend(response);
+      addCommentButton.hide();
+    })
+    .fail(function() {
+      alert('Error getting comment form');
+    })    
   });
 };
