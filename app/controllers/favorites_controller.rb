@@ -9,3 +9,8 @@ post '/tweets/:tweet_id/favorites' do
     erb :index
   end
 end
+
+delete '/favorites/:id' do
+  Favorite.find(params[:id]).destroy
+  redirect "/users/#{current_user.id}"
+end

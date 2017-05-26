@@ -14,6 +14,21 @@
           <h2><%= fav_tweet.user_actual_name %> <small>(@<%= fav_tweet.user_screen_name %>)</small></h2>
           <p><%= fav_tweet.tweet_time %></p> 
           <p class="lead"><%= fav_tweet.text %></p>
+          <% if logged_in? %>
+            <div class="container-fluid ">
+              <form action="#" method="post">
+                <button type="submit" class="btn btn-primary">Add Comment</button>
+              </form>
+            </div>
+          <% end %>
+          <% if current_user.id == @user.id %>
+            <div class="container-fluid col-md-offset-10">
+              <form action="/favorites/<%= fav_tweet.get_favorite_id(@user.id) %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-danger">DELETE</button>
+              </form>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
