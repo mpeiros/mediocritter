@@ -1,6 +1,7 @@
 $(document).ready(function() {
   favoriteFormListener();
   showCommentFormListener();
+  submitCommentFormListener();
 });
 
 var favoriteFormListener = function() {
@@ -47,5 +48,40 @@ var showCommentFormListener = function() {
     .fail(function() {
       alert('Error getting comment form');
     })    
+  });
+};
+
+var submitCommentFormListener = function() {
+  $('.comment-form-container').on('click', '.submit-comment-button', function(event) {
+    event.preventDefault();
+    
+    var submitCommentButton = $(this);
+    var commentContainerDiv = submitCommentButton.closest('.favorite-panel').find('.comment-container');
+    var submitCommentForm = $(this).closest('form');
+    var addCommentButton = submitCommentButton.closest('.favorite-panel').find('.add-comment-button');
+
+    var url = submitCommentForm.attr('action');
+    var type = submitCommentForm.attr('method');
+    var data = submitCommentForm.serialize();
+
+    $.ajax({
+      url: url, 
+      type: type,
+      data: data
+    })
+    .done(function(response) {
+      if (commentContainerDiv.find('.comment-panel').length) {
+        commentContainerDiv.after(response);
+      } else {
+        commentContainerDiv.append(response);
+      }
+    })
+    .fail(function() {
+      alert('Error making comment.');
+    })
+    .always(function() {
+      submitCommentForm.remove();
+      addCommentButton.show();
+    });
   });
 };

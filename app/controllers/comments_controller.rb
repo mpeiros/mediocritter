@@ -15,12 +15,21 @@ post '/favorites/:favorite_id/comments' do
                         content: params[:content])
 
   if comment.save
-    message = "#{current_user.username} left the following comment on your favorited tweet: #{comment.content}."
-    TwilioAdapter.send_text(message)
-  
-    redirect "/users/#{@favorite.user_id}"    
+    # message = "#{current_user.username} left the following comment on your favorited tweet: #{comment.content}."
+    # TwilioAdapter.send_text(message)
+
+    if request.xhr?
+      status 200
+      erb :'partials/_comment', locals: { comment: comment}, layout: false
+    else
+      redirect "/users/#{@favorite.user_id}"    
+    end
   else
-    @errors = comment.errors.full_messages
-    erb :'comments/new'
+    if request.xhr?
+      status 422
+    else
+      @errors = comment.errors.full_messages
+      erb :'comments/new'
+    end
   end
 end

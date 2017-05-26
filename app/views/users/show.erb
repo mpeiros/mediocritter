@@ -8,25 +8,20 @@
   <% @user.sort_favorited_tweets.each do |fav_tweet| %>
     <div class="container-fluid">
       <div class="panel panel-primary col-md-6 col-md-offset-3">
-        <div class="panel-body">
+        <div class="panel-body favorite-panel">
           <img src="<%= fav_tweet.profile_pic_url %>" alt="Profile Picture" class="img-rounded" id="profile-pic">
           <h2><%= fav_tweet.user_actual_name %> <small>(@<%= fav_tweet.user_screen_name %>)</small></h2>
           <p><%= fav_tweet.tweet_time %></p> 
           <p class="lead"><%= fav_tweet.text %></p>
-          <% if fav_tweet.get_comments(@user.id) %>
-            <% fav_tweet.get_comments(@user.id).each do |comment| %>
-              <div class="container-fluid">
-                <div class="panel panel-default col-md-12">
-                  <div class="panel-body">
-                    <p><%= comment.content %></p>
-                    <p><small>Posted by <%= comment.user.username %></small></p>
-                  </div>
-                </div>
-              </div>
+          <div class="container-fluid comment-container">
+            <% if fav_tweet.get_comments(@user.id) %>
+              <% fav_tweet.get_comments(@user.id).each do |comment| %>
+                  <%= erb :'partials/_comment', locals: { comment: comment } %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
           <% if logged_in? %>
-            <div class="container-fluid">
+            <div class="container-fluid comment-form-container">
               <form action="/favorites/<%= fav_tweet.get_favorite_id(@user.id) %>/comments/new" method="get">
                 <button type="submit" class="btn btn-primary add-comment-button">Add Comment</button>
               </form>
