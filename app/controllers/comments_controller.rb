@@ -10,7 +10,7 @@ post '/favorites/:favorite_id/comments' do
                         content: params[:content])
 
   if comment.save
-    redirect '/tweets'    
+    redirect "/users/#{favorite.user_id}"    
   else
     @errors = comment.errors.full_messages
     erb :'comments/new'
