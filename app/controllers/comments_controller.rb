@@ -10,6 +10,9 @@ post '/favorites/:favorite_id/comments' do
                         content: params[:content])
 
   if comment.save
+    message = "#{current_user.username} left the following comment on your favorited tweet: #{comment.content}."
+    TwilioAdapter.send_text(message)
+  
     redirect "/users/#{favorite.user_id}"    
   else
     @errors = comment.errors.full_messages
